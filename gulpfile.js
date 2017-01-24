@@ -2,12 +2,13 @@ var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var webpack = require('webpack-stream');
 var browserSync = require("browser-sync").create();
+var config = require('./webpack.config.js');
 
 gulp.task('build', function() {
   return gulp
     .src('src/index.js')
     .pipe(plumber())
-    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(webpack(config))
     .pipe(gulp.dest('build/'));
 });
 
@@ -24,6 +25,6 @@ gulp.task('default', ['build'], function() {
   });
 
   gulp.watch([
-    'index.html', 'src/**', 'gulpfile.js', 'package.json'
+    'index.html', 'src/**/*', 'gulpfile.js', 'package.json'
   ], ['js-watch']);
 });
