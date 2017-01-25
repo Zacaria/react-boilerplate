@@ -1,22 +1,20 @@
-var gulp = require('gulp');
-var plumber = require('gulp-plumber');
-var webpack = require('webpack-stream');
-var browserSync = require("browser-sync").create();
-var config = require('./webpack.config.js');
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const webpack = require('webpack-stream');
+const browserSync = require("browser-sync").create();
+const config = require('./webpack.config.js');
 
-gulp.task('build', function() {
-  return gulp
+gulp.task('build', () =>
+  gulp
     .src('src/index.js')
     .pipe(plumber())
     .pipe(webpack(config))
-    .pipe(gulp.dest('build/'));
-});
+    .pipe(gulp.dest('build/'))
+);
 
-gulp.task('js-watch', ['build'], function() {
-  browserSync.reload();
-});
+gulp.task('js-watch', ['build'], () => browserSync.reload());
 
-gulp.task('default', ['build'], function() {
+gulp.task('default', ['build'], () => {
 
   browserSync.init({
     server: {
