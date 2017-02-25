@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component {
-
   render() {
     return (
       <div>Coucou</div>
@@ -10,5 +9,6 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App/>, document.getElementById('mount-point'));
+ReactDOM.render(<App/>, document.getElementById('root'));
+
+export default App;
